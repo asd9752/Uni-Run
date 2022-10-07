@@ -12,8 +12,10 @@ public class ScrollingObject : MonoBehaviour
     void Update()
     {
         //초당 speed로 이동   
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
-        
+        if (!GameManager.instance.isGameover)
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
         
     }
 
