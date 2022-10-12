@@ -27,13 +27,44 @@ public class PlatformSpawner : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   //count만큼의 공간을 가지는 새로운 발판 배열 생성
+        platforms = new GameObject[count];
         
+        //count만큼 루프하면서 발판 생성
+        for(int i =0; i< count; i++)
+        {
+            //platformPrefab을 원본으로 새 발판을 poolposition 위치에 복제 생성
+            //생성된 발판을 platform 배열에 할당
+            platforms[i] = Instantiate(platformPrefab, poolPosition, Quaternion.identity);
+        }
+        //마지막 배치 시점 초기화
+        lastSpawnTime = 0f;
+        //다음번 배치까지의 시간 간격을 0으로 초기화
+        timeBetSpawn = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //게임오버상태에서는 동작하지 않음
+     if(GameManager.instance.isGameover)
+        {
+            return;
+        }
+     //마지막 배치 시점에서 timeBetSpawn 이상 시간이 흘렀다면
+     if(Time.time >= lastSpawnTime +timeBetSpawn)
+        {
+            lastSpawnTime = Time.time;
+            timeBetSpawn = Random.Range(timeBetSpawnMin, timeBetSpawnMax);
+            float yPos = Random.Range(yMin, yMax);
+            platforms[currentIndex].SetActive(false);
+            platforms[currentIndex].SetActive(true);
+            platforms[currentIndex].transform.position = new Vector2(xPos, yPos);
+            currentIndex++;
+            if(currentIndex >= count)
+            {
+                currentIndex = 0;
+            }
+        }
     }
 }
