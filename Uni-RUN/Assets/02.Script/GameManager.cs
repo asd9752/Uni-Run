@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;// 싱글턴을 할당할 전역변수
     public bool isGameover = false; //게임오버상태
-    public Text scoreText;//점수를 출력할 UI 텍스트
+    public static Text scoreText;//점수를 출력할 UI 텍스트
     public GameObject gameoverUI;// 게임오버시 활성화할 UI 게임 오브젝트
 
     private int score = 0;//게임 정수
+ 
 
     // Start is called before the first frame update
     //게임 시작과 동시에 싱글턴을 구성
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("씬에 두개 이상의 게임 매니저가 존재합니다.");
             Destroy(gameObject);
         }
+
     }
 
     // Update is called once per frame
@@ -43,7 +45,8 @@ public class GameManager : MonoBehaviour
             //게임오버 상태에서 마우스 왼쪽 버튼을 클릭하면 현재 씬 재시작
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-   
+       
+      
     }
     //점수를 증가시키는 메서드
     public void AddScore(int newScore)
@@ -62,4 +65,14 @@ public class GameManager : MonoBehaviour
         gameoverUI.SetActive(true);
     }
 
+
+    public void Menuactive(int num)
+    {
+        Time.timeScale = num;
+        
+    }
+    public void EXIT()
+    {
+        Application.Quit();
+    }
 }

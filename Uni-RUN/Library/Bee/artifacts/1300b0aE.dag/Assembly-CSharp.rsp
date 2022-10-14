@@ -373,12 +373,14 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/02.Script/Apple.cs"
 "Assets/02.Script/Backgroundloop.cs"
 "Assets/02.Script/GameManager.cs"
 "Assets/02.Script/Platform.cs"
 "Assets/02.Script/PlatformSpawner.cs"
 "Assets/02.Script/PlayerController.cs"
 "Assets/02.Script/ScrollingObject.cs"
+"Assets/02.Script/UIMethod.cs"
 -langversion:9.0
 
 /deterministic
